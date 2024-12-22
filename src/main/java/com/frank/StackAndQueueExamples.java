@@ -86,8 +86,66 @@ public class StackAndQueueExamples {
 		
 		System.out.println("Number items in clonedStack - .size(): " + clonedStack.size());
 		System.out.println("    Number items in myStack - .size(): " + myStack.size());
-			
+
+
+		// Gothrough the stack until ies empty
+		while (!myStack.isEmpty()) {
+			System.out.println(myStack.pop());
+		}
+
+
 		System.out.println("--------------------------------------------");
+
+		/*> Task :com.frank.StackAndQueueExamples.main()
+Displaying elements in myStack:
+Item @ index #0 Kirk
+Item @ index #1 Spock
+Item @ index #2 McCoy
+Item @ index #3 Uhura
+Item @ index #4 Scotty
+Item @ index #5 Picard
+Item @ index #6 Worf
+Item @ index #7 Riker
+Item @ index #8 Geordi
+Item @ index #9 Data
+
+Number items in myStack - .size(): 10
+  Getting Top of myStack - .pop(): Data
+Number items in myStack - .size(): 9
+  Last element in Stack - .get(0): Kirk
+   Top Element on Stack - .peek(): Geordi
+Number items in myStack - .size(): 9
+
+Position of Spock - .search("Spock"): 8
+Retrieve Spock- .get(mystack.search("Spock")): Geordi
+Number items in myStack - .size(): 9
+
+Cloning myStack - .clone()
+Number items in clonedStack - size(): 9
+
+Clearing clonedStack - .clear()
+Number items in clonedStack - .size(): 0
+    Number items in myStack - .size(): 9
+--------------------------------------------
+Item #0 in Queue: Frank
+Item #1 in Queue: Daniel
+Item #2 in Queue: Brian
+Item #3 in Queue: Mauli
+Item #4 in Queue: Petar
+Item #5 in Queue: Tom
+--------------------------------------------
+
+Number items in myQueue - .size(): 6
+ Getting Top of myQueue - .poll(): Frank
+Number items in myQueue - .size(): 5
+   Top Element on Queue - .peek(): Daniel
+Number items in myQueue - .size(): 5
+    Number items in myQueue - .size(): 5
+--------------------------------------------
+ */
+
+
+
 /********************************************************************************
  *  Queue - FIFO Collection - like a line at the bank or a drive thru or line at DisneyWorld
  *                            used when you want to retrieve data in the same order it was put in
@@ -126,13 +184,45 @@ public class StackAndQueueExamples {
 			}
 		System.out.println("--------------------------------------------");		
 			
-		System.out.println("\nNumber items in myQueue - .size(): " + myQueue.size());
-		System.out.println(" Getting Top of myQueue - .poll(): " + myQueue.poll());
-		System.out.println("Number items in myQueue - .size(): " + myQueue.size());
-		System.out.println("   Top Element on Queue - .peek(): " + myQueue.peek());
-		System.out.println("Number items in myQueue - .size(): " + myQueue.size());
+		System.out.println("\nNumber items in myQueue - .size(): " + myQueue.size());//6
+		System.out.println(" Getting Top of myQueue - .poll(): " + myQueue.poll());//Frank
+		System.out.println("Number items in myQueue - .size(): " + myQueue.size());//
+		System.out.println("   Top Element on Queue - .peek(): " + myQueue.peek());//Daniel
+		System.out.println("Number items in myQueue - .size(): " + myQueue.size());//5
 
-		System.out.println("    Number items in myQueue - .size(): " + myQueue.size());
+		System.out.println("    Number items in myQueue - .size(): " + myQueue.size());//5
+		System.out.println(myQueue);
+
+		/*for (int i = 0; i < myQueue.size(); i++) {
+			System.out.println(myQueue.poll());
+		}*/
+		/*Number items in myQueue - .size(): 5
+				[Daniel, Brian, Mauli, Petar, Tom]
+		Daniel
+		Brian
+		Mauli*/
+		//Why/
+		//When i = 0, 0 is < 5  yes - so it removes Daniel
+		//When i = 1 , 1 < 4 yes - so it removes Brian
+		//When i = 2 , 2 < 3 yes - so it removes Mauli
+		// When i = 3 , 3 < 2 NO stop iterating
+		// esto pasa porque se ha terminado la iteración en este caso,
+		// ya que hemos recorrido todos los elementos en la cola
+
+		//Como podemos arreglar esto?
+		//Se puede usar un while para mantener la iteración hasta que la cola esté vacía
+		//Mientras hay elementos en la cola, se va eliminando el primer elemento y se imprime:
+        while (!myQueue.isEmpty()) {
+            System.out.println(myQueue.poll());
+        }
+	/*	[Daniel, Brian, Mauli, Petar, Tom]
+		Daniel
+		Brian
+		Mauli
+		Petar
+		Tom*/
+		//Esto lo hace en lugar de un for, y lo hace hasta que la cola esté vacía
+        //Esto es una manera más eficiente de hacerlo.
 			
 		System.out.println("--------------------------------------------");	
 	}
